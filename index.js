@@ -48,7 +48,6 @@ function START(w) {
     const minSlider = w.document.getElementById("min"); 
     const maxSlider = w.document.getElementById("max");
     const playingWrap = w.document.getElementById("playing-wrap");
-
     function rand(a, b) {
         return ~~(w.Math.random() * (b - a + 1) + a);
     }
