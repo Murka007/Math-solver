@@ -144,7 +144,6 @@ function START(w) {
     function init() {
         let solved = 0;
         let seconds = 60;
-
         let task, answer;
         const ops = getAvailableOperators();
         function generateTask() {
