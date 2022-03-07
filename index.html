@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Math solver</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="shortcut icon" href="img/logo.png">
+    </head>
+    <body>
+        <div class="page-container">
+            <div class="page-header">
+                <div class="header-wrapper">
+                    <a href="/">Math solver</a>
+                </div>
+            </div>
+            <div class="page-body">
+                <div class="solver-container">
+                    <div class="solver-wrapper">
+                        <div class="prev-wrap hidden">
+                            <div class="solver-start">
+                                <h1 class="solver-data" id="countdownTimer">60</h1>
+                                <h2 class="solver-data" id="solverTask">2 + 2 =</h2>
+                            </div>
+                            <input id="solver-input" type="text" placeholder="Enter a number">
+                        </div>
+                        <div class="prev-wrap">
+                            <h1 class="solver-data" id="solvedCount"></h1>
+                            <button class="button-start" id="solveStart">Get Started</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-container">
+                    <div class="menu-panel">
+                        <h2>Settings</h2>
+                        <div id="playing-wrap">
+                            <div class="settings-wrap">
+                                <span class="settings-text">Addition</span>
+                                <input id="addition" class="settings-checkbox" type="checkbox">
+                            </div>
+                            <div class="settings-wrap">
+                                <span class="settings-text">Subtraction</span>
+                                <input id="subtraction" class="settings-checkbox" type="checkbox">
+                            </div>
+                            <div class="settings-wrap">
+                                <span class="settings-text">Division</span>
+                                <input id="division" class="settings-checkbox" type="checkbox">
+                            </div>
+                            <div class="settings-wrap">
+                                <span class="settings-text">Multiplication</span>
+                                <input id="multiplication" class="settings-checkbox" type="checkbox">
+                            </div>
+                            <div class="settings-wrap">
+                                <span class="settings-text">Min number</span>
+                                <div class="slider-wrap">
+                                    <input id="min" class="settings-slider" min="1" max="100" type="range">
+                                    <span class="slider-value"></span>
+                                </div>
+                            </div>
+                            <div class="settings-wrap">
+                                <span class="settings-text">Max number</span>
+                                <div class="slider-wrap">
+                                    <input id="max" class="settings-slider" min="1" max="100" type="range">
+                                    <span class="slider-value"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-panel">
+                        <h2>About math test</h2>
+                        <p>Solve as many tasks as possible in 60 seconds</p>
+                        <p>Adjust the difficulty of the tasks and increase your progress</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
