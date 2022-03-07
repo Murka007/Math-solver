@@ -51,8 +51,11 @@ function START(w) {
     function rand(a, b) {
         return ~~(w.Math.random() * (b - a + 1) + a);
     }
+    function isObject(a) {
+        return a && typeof a === "object" && !w.Array.isArray(a);
+    } 
     function isTrusted(e) {
-        return e && e.isTrusted && e instanceof w.Event;
+        return e && isObject(e) && e.isTrusted && e instanceof w.Event;
     }
     start.onclick = function(e) {
         if (!isTrusted(e)) return;
