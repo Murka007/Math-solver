@@ -29,6 +29,10 @@ h1, h2, h3, h4 {
     padding: 12px 18px;
     font-weight: 600;
 }
+.header-wrapper > a > img {
+    vertical-align: middle;
+    padding: 0px 5px;
+}
 .header-wrapper a:hover {
     background-color: #ececec;
 }
