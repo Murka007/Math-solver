@@ -1,6 +1,5 @@
 function START(w) {
     const log = w.console.log;
-    const error = w.console.error;
     const storage = {
         set(key, value) {
             w.localStorage.setItem(key, w.btoa(w.JSON.stringify(value)));
@@ -51,11 +50,8 @@ function START(w) {
     function rand(a, b) {
         return ~~(w.Math.random() * (b - a + 1) + a);
     }
-    function isObject(a) {
-        return a && typeof a === "object" && !w.Array.isArray(a);
-    } 
     function isTrusted(e) {
-        return e && isObject(e) && e.isTrusted && e instanceof w.Event;
+        return e && e.isTrusted && e instanceof w.Event;
     }
     start.onclick = function(e) {
         if (!isTrusted(e)) return;
@@ -107,39 +103,31 @@ function START(w) {
         return [min, max];
     }
     const operators = {
-        addition: {
-            getTask: function() {
-                const [min, max] = getMinMax();
-                return [min + " + " + max + " =", min + max];
-            }
+        addition: function() {
+            const [min, max] = getMinMax();
+            return [min + " + " + max + " =", min + max];
         },
-        subtraction: {
-            getTask: function() {
-                let value = [min, max] = getMinMax();
-                while (max - min < 0) {
-                    value = [min, max] = getMinMax();
-                }
-                return [max + " - " + min + " =", max - min];
+        subtraction: function() {
+            let value = [min, max] = getMinMax();
+            while (max - min < 0) {
+                value = [min, max] = getMinMax();
             }
+            return [max + " - " + min + " =", max - min];
         },
-        division: {
-            getTask: function() {
-                let value = [min, max] = getMinMax();
-                while (max % min != 0) {
-                    value = [min, max] = getMinMax();
-                }
-                return [max + " / " + min + " =", max / min];
+        division: function() {
+            let value = [min, max] = getMinMax();
+            while (max % min != 0) {
+                value = [min, max] = getMinMax();
             }
+            return [max + " / " + min + " =", max / min];
         },
-        multiplication: {
-            getTask: function() {
-                const [min, max] = getMinMax();
-                return [min + " * " + max + " =", min * max];
-            }
+        multiplication: function() {
+            const [min, max] = getMinMax();
+            return [min + " * " + max + " =", min * max];
         }
     };
     function getAvailableOperators() {
-        return w.Object.keys(operators).filter(a => sets[a]);
+        return w.Object.entries(operators).filter(([key, value]) => sets[key]);
     }
     function init() {
         let solved = 0;
@@ -147,7 +135,7 @@ function START(w) {
         let task, answer;
         const ops = getAvailableOperators();
         function generateTask() {
-            const getTask = operators[ops[rand(0, ops.length-1)]].getTask();
+            const getTask = ops[rand(0, ops.length-1)][1]();
             task = getTask[0];
             answer = getTask[1];
             solverTask.textContent = task;
